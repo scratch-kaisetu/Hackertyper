@@ -1,0 +1,253 @@
+let x = Math.random();
+const y = "Hello World";
+for (let i = 0; i < 10; i++) { console.log(i); }
+function greet(name) { return "Hello " + name; }
+class Person { constructor(name) { this.name = name; } }
+const person = new Person("Alice");
+console.log(person.name);
+const arr = [1, 2, 3, 4, 5];
+arr.forEach(num => console.log(num));
+if (x > 0.5) { console.log("High"); } else { console.log("Low"); }
+const result = arr.map(num => num * 2);
+console.log(result);
+const obj = {a: 1, b: 2, c: 3};
+for (const key in obj) { console.log(key + ": " + obj[key]); }
+try { throw new Error("An error occurred"); } catch (e) { console.error(e); }
+import java.util.Random;
+public class Main {
+    public static void main(String[] args) {
+        Random rand = new Random();
+        double x = rand.nextDouble();
+        String y = "Hello World";
+        for (int i = 0; i < 10; i++) {
+            System.out.println(i);
+        }
+        System.out.println(y);
+        if (x > 0.5) {
+            System.out.println("High");
+        } else {
+            System.out.println("Low");
+        }
+    }
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello World</title>
+</head>
+<body>
+    <h1>Hello, World!</h1>
+    <p>This is a sample paragraph.</p>
+</body>
+</html>
+body {
+    background-color: #000;
+    color: #0f0;
+    font-family: monospace;
+}
+h1 {
+    font-size: 2em;
+}
+SELECT * FROM users;
+INSERT INTO users (name, email) VALUES ("Alice", "alice@example.com");
+UPDATE users SET email = "alice_new@example.com" WHERE name = "Alice";
+DELETE FROM users WHERE name = "Alice";
+echo "Hello, World!"
+for i in {1..10}; do echo $i; done
+if [ $RANDOM -gt 16384 ]; then echo "High"; else echo "Low"; fi
+x = rand
+y = "Hello World"
+10.times do |i|
+  puts i
+end
+puts y
+if x > 0.5
+  puts "High"
+else
+  puts "Low"
+end
+#include <stdio.h>
+#include <stdlib.h>
+
+#define MAX_SIZE 100
+
+struct Node {
+    int data;
+    struct Node* next;
+};
+void insert(struct Node** head_ref, int new_data) {
+    struct Node* new_node = (struct Node*)malloc(sizeof(struct Node));
+    new_node->data = new_data;
+    new_node->next = (*head_ref);
+    (*head_ref) = new_node;
+}
+void deleteList(struct Node** head_ref) {
+    struct Node* current = *head_ref;
+    struct Node* next;
+    while (current != NULL) {
+        next = current->next;
+        free(current);
+        current = next;
+    }
+    *head_ref = NULL;
+}
+int main() {
+    struct Node* head = NULL;
+    int i;
+
+    for (i = 0; i < MAX_SIZE; i++) {
+        insert(&head, i);
+    }
+    printf("Linked list before deletion:\n");
+    struct Node* temp = head;
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+
+    deleteList(&head);
+
+    printf("\nLinked list after deletion:\n");
+    temp = head;
+    while (temp != NULL) {
+        printf("%d ", temp->data);
+        temp = temp->next;
+    }
+
+    return 0;
+}
+const output = document.getElementById('output');
+function getQueryParams() {
+    const params = {};
+    const queryString = window.location.search.substring(1);
+    const queries = queryString.split("&");
+    for (let i = 0; i < queries.length; i++) {
+        const pair = queries[i].split("=");
+        params[decodeURIComponent(pair[0])] = decodeURIComponent(pair[1]);
+    }
+    return params;
+}
+
+const queryParams = getQueryParams();
+let displayText = queryParams.text || '';
+displayText = displayText.replace(/\[n\]/g, '\n');
+function fetchRandomCodeLines(callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                const lines = xhr.responseText.split('\n');
+                callback(lines);
+            } else {
+                console.error('Failed to fetch random code lines:', xhr.status);
+            }
+        }
+    };
+    xhr.open('GET', 'randomCodeLines.txt', true);
+    xhr.send();
+}
+let codeLines = [];
+fetchRandomCodeLines(function(lines) {
+    codeLines = displayText ? displayText.split('\n') : lines;
+});
+
+let currentLine = 0;
+let currentChar = 0;
+function appendTextAndScroll(text) {
+    const shouldScroll = output.scrollTop + output.clientHeight === output.scrollHeight;
+    output.textContent += text;
+    if (shouldScroll) {
+        output.scrollTop = output.scrollHeight;
+    }
+}
+
+document.addEventListener('keydown', (event) => {
+    if (currentLine < codeLines.length) {
+        const line = codeLines[currentLine];
+        const charsToAdd = Math.floor(Math.random() * 5) + 1;
+
+        for (let i = 0; i < charsToAdd; i++) {
+            if (currentChar < line.length) {
+                appendTextAndScroll(line[currentChar]);
+                currentChar++;
+            } else {
+                appendTextAndScroll('\n');
+                currentChar = 0;
+                currentLine++;
+                if (!displayText && currentLine >= codeLines.length) {
+                    codeLines.push(lines[Math.floor(Math.random() * lines.length)]);
+                }
+                break;
+            }
+        }
+    }
+});
+import random
+import math
+
+def greet(name):
+    return "Hello, " + name + "!"
+
+class Person:
+    def __init__(self, name):
+        self.name = name
+    
+    def get_name(self):
+        return self.name
+    
+    def set_name(self, new_name):
+        self.name = new_name
+
+def generate_random_list(length):
+    return [random.randint(1, 100) for _ in range(length)]
+
+def calculate_mean(numbers):
+    return sum(numbers) / len(numbers)
+
+def is_prime(num):
+    if num <= 1:
+        return False
+    if num == 2:
+        return True
+    if num % 2 == 0:
+        return False
+    sqrt_num = int(math.sqrt(num)) + 1
+    for i in range(3, sqrt_num, 2):
+        if num % i == 0:
+            return False
+    return True
+
+def factorial(n):
+    if n == 0 or n == 1:
+        return 1
+    result = 1
+    for i in range(2, n + 1):
+        result *= i
+    return result
+
+def main():
+    names = ["Alice", "Bob", "Charlie", "David", "Eve"]
+    random.shuffle(names)
+    print("Shuffled names:", names)
+    
+    nums = generate_random_list(10)
+    print("Random numbers:", nums)
+    print("Mean of numbers:", calculate_mean(nums))
+    
+    num_to_check = random.choice(nums)
+    if is_prime(num_to_check):
+        print(num_to_check, "is a prime number.")
+    else:
+        print(num_to_check, "is not a prime number.")
+    
+    for i in range(5):
+        print("Factorial of", i, "is", factorial(i))
+    
+    person = Person("Alice")
+    print("Person's name:", person.get_name())
+    person.set_name("Bob")
+    print("Updated person's name:", person.get_name())
+    print(greet(person.get_name()))
+
+if __name__ == "__main__":
+    main()
