@@ -1,4 +1,13 @@
 # Hackertyperの使い方
+
+おすすめのサイトができました。
+
+普通にアクセスするより簡単です。
+
+
+
+
+
 まずは普通にアクセスしてみましょう[Hackertyper](https://scratch-kaisetu.github.io/Hackertyper/ "Hackertyperにアクセス")
 
 すると真っ黒の画面が出てきます。
@@ -18,3 +27,8 @@ https://scratch-kaisetu.github.io/Hackertyper/?t=hello_World
 また改行は`[n]`と文章中に打つと改行がされます。
 
 例`https://scratch-kaisetu.github.io/Hackertyper/?t=hello_World[n]hello_World`
+
+## デバッグアクセス
+以下URLにアクセスすると数字だけ入力されます
+
+https://scratch-kaisetu.github.io/Hackertyper/?d=1
