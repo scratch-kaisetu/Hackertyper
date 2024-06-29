@@ -4,9 +4,9 @@
 
 普通にアクセスするより簡単です。
 
+https://scratch-kaisetu.github.io/Hackertyper/mode.html
 
-
-
+***
 
 まずは普通にアクセスしてみましょう[Hackertyper](https://scratch-kaisetu.github.io/Hackertyper/ "Hackertyperにアクセス")
 
