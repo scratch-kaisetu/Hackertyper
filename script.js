@@ -15,6 +15,7 @@ function getQueryParams() {
 // クエリパラメータを取得
 const queryParams = getQueryParams();
 let displayText = queryParams.t || ''; // "t"に変更
+const debugMode = queryParams.d === '1'; // デバッグモード
 
 // [n]を改行に置き換える
 displayText = displayText.replace(/\[n\]/g, '\n');
@@ -56,34 +57,47 @@ fetchRandomCodeLines(function(lines) {
 
 let currentLine = 0;
 let currentChar = 0;
+let debugCounter = 0; // デバッグカウンタ
 
 // テキストを出力し、常に一番下にスクロール
 function appendTextAndScroll(text) {
-    const shouldScroll = output.scrollTop + output.clientHeight === output.scrollHeight;
     output.textContent += text;
-    if (shouldScroll) {
-        output.scrollTop = output.scrollHeight;
-    }
+    scrollToBottom(); // 追加：絶対位置を指定して一番下にスクロール
+}
+
+// 最下部にスクロールする関数
+function scrollToBottom() {
+    const element = document.documentElement;
+    const bottom = element.scrollHeight - element.clientHeight;
+    window.scroll(0, bottom);
 }
 
 document.addEventListener('keydown', (event) => {
-    if (currentLine < codeLines.length) {
-        const line = codeLines[currentLine];
-        const charsToAdd = Math.floor(Math.random() * 5) + 1;
+    if (debugMode) {
+        // デバッグモードの場合、数字をカウントして表示
+        debugCounter++;
+        appendTextAndScroll(debugCounter + '\n');
+    } else {
+        if (currentLine < codeLines.length) {
+            const line = codeLines[currentLine];
+            const charsToAdd = Math.floor(Math.random() * 5) + 1;
 
-        for (let i = 0; i < charsToAdd; i++) {
-            if (currentChar < line.length) {
-                appendTextAndScroll(line[currentChar]);
-                currentChar++;
-            } else {
-                appendTextAndScroll('\n');
-                currentChar = 0;
-                currentLine++;
-                if (!displayText && currentLine >= codeLines.length) {
-                    codeLines.push(lines[Math.floor(Math.random() * lines.length)]);
+            for (let i = 0; i < charsToAdd; i++) {
+                if (currentChar < line.length) {
+                    appendTextAndScroll(line[currentChar]);
+                    currentChar++;
+                } else {
+                    appendTextAndScroll('\n');
+                    currentChar = 0;
+                    currentLine++;
+                    if (!displayText && currentLine >= codeLines.length) {
+                        codeLines.push(lines[Math.floor(Math.random() * lines.length)]);
+                    }
+                    break;
                 }
-                break;
             }
         }
+        // 追加：キーを押したら絶対位置を指定して一番下にスクロール
+        scrollToBottom();
     }
 });
