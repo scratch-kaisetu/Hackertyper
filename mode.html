@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>アクセスモード</title>
+    <script>
+        function accessUrl(mode) {
+            let baseUrl = "https://scratch-kaisetu.github.io/Hackertyper/"; // ここを実際のサイトURLに変更してください
+            let url = baseUrl;
+            
+            if (mode === "originalText") {
+                const inputText = document.getElementById("textInput").value;
+                const formattedText = inputText.replace(/\n/g, "[n]");
+                url += "?t=" + encodeURIComponent(formattedText);
+            } else if (mode === "debug") {
+                url += "?d=1";
+            }
+            
+            window.location.href = url;
+        }
+    </script>
+</head>
+<body>
+    <h1>アクセスモード</h1>
+    <button onclick="accessUrl('normal')">普通にアクセス</button>
+    <br><br>
+    <textarea id="textInput" rows="4" cols="50" placeholder="テキストを入力してください"></textarea>
+    <br>
+    <button onclick="accessUrl('originalText')">オリジナルテキストアクセス</button>
+    <br><br>
+    <button onclick="accessUrl('debug')">デバッグアクセス</button>
+</body>
+</html>
