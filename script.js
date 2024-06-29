@@ -72,7 +72,8 @@ function scrollToBottom() {
     window.scroll(0, bottom);
 }
 
-document.addEventListener('keydown', (event) => {
+// キーを押したときまたは画面タップしたときの処理
+function handleKeyPress() {
     if (debugMode) {
         // デバッグモードの場合、数字をカウントして表示
         debugCounter++;
@@ -97,7 +98,16 @@ document.addEventListener('keydown', (event) => {
                 }
             }
         }
-        // 追加：キーを押したら絶対位置を指定して一番下にスクロール
+        // キーを押したら絶対位置を指定して一番下にスクロール
         scrollToBottom();
     }
+}
+
+// キーを押したときの処理
+document.addEventListener('keydown', handleKeyPress);
+
+// 画面をタップしたときの処理
+document.addEventListener('mousedown', (event) => {
+    event.preventDefault(); // デフォルトの動作をキャンセル
+    handleKeyPress();
 });
